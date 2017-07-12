@@ -1,0 +1,41 @@
+1.	clFormWindow - Standard windows api declaration and its implementation - Nothing to be verified / checked here.
+
+
+
+
+Tips:
+Identify unused modules / functions and remove them - Not sure whether the functionality in DisableShift and ExcelMacro is used anywhere
+Move the hardcoded values from main module / procedure to Constants to enable easier code maintenance
+Make use of Option Explicit to avoid unintended creation of variables and inappropriate date types
+MovetoMiddle - GetTaskBarSize not used
+TempBCLPosting - Lot of hardcoded variables (share folders, file creation paths etc) could be moved to ini files enabling easier update as and when required with no change in underlying code
+ 'read
+   Private Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" _
+                 (ByVal lpApplicationName As String, _
+                   ByVal lpKeyName As String, _
+                   ByVal lpDefault As String, _
+                   ByVal lpReturnedString As String, _
+                   ByVal nSize As Long, _
+                   ByVal lpFileName As String) As Long
+   'write
+   Private Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" _
+                 (ByVal lpApplicationName As String, _
+                   ByVal lpKeyName As String, _
+                   ByVal lpString As String, _
+                   ByVal lpFileName As String) As Long
+https://bytes.com/topic/access/answers/557917-reading-writing-ini-files-using-vba-code
+
+Database master tables or ini files/text files could be used instead of hardcoding the values in the code
+
+Using ini files for field capture could eliminate creation of each module for a circle and a single module can handle the entire functionality.
+Code for TempBCLPosting will become fully generic instead of handling multiple case statements
+
+Use instr to eliminate multiple If conditions for eg 
+If browser.Title = "*Login" Or browser.Title = "Login" Then
+If browser.Title = "*Accounts Receivable" Or browser.Title = "Accounts Receivable" Then 
+
+Only difference noticed in CloseinCRM functions is hardcoding of URLs.
+
+BrowserErrorReRun - why only in some circles
+
+BCLPostingsHaryana and BCLPostingsPunjab - Duplicate code in main function and in the Goto Condition BrowserErrorReRun - code can be put in a common function

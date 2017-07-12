@@ -1,0 +1,46 @@
+Only the following  minor differences has been observed in the module code of all the circles
+
+Delhi
+control: name=beID,value=1130489
+
+Call browser.FindElement("a", "uiname=MUM").Click  (should it be DEL)?
+
+Gujarat
+control: ("select", "name=env").Select("vel1_PE")
+some code related to Accounts Receivable
+
+Haryana
+BrowserErrorRerun code
+
+
+MnG
+nothing different observed
+
+MP
+nothing different observed
+
+Mumbai - not much except one variable name reversed errorreason
+
+Punjab
+control: name=beID,value=1130449
+some code related to Accounts Receivable
+BrowserErrorRerun code
+
+rajasthan
+control: ("select", "name=env").Select("vel1_PE")
+control: name=beID,value=1130459").
+
+upe
+control: name=beID,value=1130609"
+control: ("textarea", "name=memo").InputText(Adreason & "_" & SrNum & "_" & "CBO")
+
+upw
+control: name=beID,value=1130619
+
+suggested to have a single generic function in one module called BCLPostings to handle functionality of all the circles
+
+function CloseinCRMUPW
+
+4 URLs identified for each circle that are found to be different. Apart from that the code is the same for all the circles.
+
+suggested to have a single generic function in one module called ClostinCRM to handle functionality of all the circles
