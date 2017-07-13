@@ -4,11 +4,11 @@
 
 
 Tips:
-Identify unused modules / functions and remove them - Not sure whether the functionality in DisableShift and ExcelMacro is used anywhere
-Move the hardcoded values from main module / procedure to Constants to enable easier code maintenance
-Make use of Option Explicit to avoid unintended creation of variables and inappropriate date types
-MovetoMiddle - GetTaskBarSize not used
-TempBCLPosting - Lot of hardcoded variables (share folders, file creation paths etc) could be moved to ini files enabling easier update as and when required with no change in underlying code
+-- Identify unused modules / functions and remove them - Not sure whether the functionality in DisableShift and ExcelMacro is used anywhere
+-- Move the hardcoded values from main module / procedure to Constants to enable easier code maintenance
+-- Make use of Option Explicit to avoid unintended creation of variables and inappropriate date types
+-- MovetoMiddle - GetTaskBarSize not used
+-- TempBCLPosting - Lot of hardcoded variables (share folders, file creation paths etc) could be moved to ini files enabling easier update as and when required with no change in underlying code
  'read
    Private Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" _
                  (ByVal lpApplicationName As String, _
@@ -25,17 +25,26 @@ TempBCLPosting - Lot of hardcoded variables (share folders, file creation paths 
                    ByVal lpFileName As String) As Long
 https://bytes.com/topic/access/answers/557917-reading-writing-ini-files-using-vba-code
 
-Database master tables or ini files/text files could be used instead of hardcoding the values in the code
+-- Database master tables or ini files/text files could be used instead of hardcoding the values in the code
 
 Using ini files for field capture could eliminate creation of each module for a circle and a single module can handle the entire functionality.
 Code for TempBCLPosting will become fully generic instead of handling multiple case statements
 
-Use instr to eliminate multiple If conditions for eg 
-If browser.Title = "*Login" Or browser.Title = "Login" Then
-If browser.Title = "*Accounts Receivable" Or browser.Title = "Accounts Receivable" Then 
+-- Use instr function to eliminate multiple If conditions using OR. For example If browser.Title = "*Login" Or browser.Title = "Login" Then , If browser.Title = "*Accounts Receivable" Or browser.Title = "Accounts Receivable" Then etc.
 
-Only difference noticed in CloseinCRM functions is hardcoding of URLs.
+-- Only difference noticed in CloseinCRM functions is hardcoding of URLs.
 
 BrowserErrorReRun - why only in some circles
 
-BCLPostingsHaryana and BCLPostingsPunjab - Duplicate code in main function and in the Goto Condition BrowserErrorReRun - code can be put in a common function
+-- BCLPostingsHaryana and BCLPostingsPunjab - Duplicate code in main function and in the Goto Condition BrowserErrorReRun - code can be put in a common function
+
+-- Error handling and logging - reconciliation process 
+
+-- what is the practice of deployment
+
+Need to measure the benchmark - how the application is performing now and how it will perform after the changes are implemented
+
+-- where is AutoExec Macro and when is ap_DisableShift and ap_EnableShift gets executed. I do not find this Macro in the access db
+
+
+--                If Forms![Autobots]![ReasonError].Value = "" and Forms![Autobots]![dupcheck].Value <> "Dup" Then

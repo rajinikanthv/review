@@ -1,0 +1,74 @@
+•Always use Option Explicit, usually use Option Private Module (When a module contains Option Private Module, the public parts, for example, variables, objects, and user-defined types declared at module level, are still available within the project containing the module, but they are not available to other applications or projects.). 
+
+• Variable Scope: Give Module level variables a scope qualifier prefix g_, p_ or m_ (Global , Public or Module). Scope everything as tightly as possible. 
+
+. Use procedure level scope where possible and pass values by parameters. 
+
+•Use meaningful names for all procedures and variables. No need to prefix according to datatypes.
+
+• Avoid magic numbers and strings - use constants.
+
+• Never comment what the code does - comment only WHY something is done, especially if it is unusual. Add a couple of sentences to provide an overview of a module or class.
+
+•Pass parameters ByVal (ByRef is the default) - only use ByRef where you intend to modify the parameter and pass the change back to the caller.
+
+•Avoid Application.Run where possible as it breaks the error handling stack. 
+
+Always use Option Explicit in VBA code to ensure no undeclared variables.  Variable automatically become Variant and become overhead when it has to be typecast.
+
+•Use explicit data casting Cstr() Cbool() etc 
+
+•Deploy an ACCDE version of your database to your end-users rather than the source ACCDB (needtocheck)
+
+If possible, make an MDE file out of your database. An MDE file cannot become decompiled, so your Visual Basic code always runs at top speed. Additionally, since no source code is stored in the MDE file, the database loads faster and uses less memory. (if access has data stored in tables)
+
+Getting your database into the compiled state is actually rather easy:
+
+1.Open any module.
+
+
+2.From the Debug menu, select Compile and Save All Modules.
+
+
+
+Choose the Most Efficient Variable Type
+
+Use Early Binding
+
+
+Avoid using the Object data type. Instead use the specific data type for the object you are working with. This allows Visual Basic to employ "early binding," which can be substantially faster in many cases.
+
+Eliminate Dead Code
+
+
+Eliminate unused procedures and unused variables. These elements use memory unnecessarily, and slow program load and execution. The FMS Total Access Analyzer program finds unused procedures, variables, and constants, and variables assigned but not used.
+
+Don't Use Expressions to Determine Loop Boundaries
+
+The "On Error Resume Next" command should never be used as your primary error handling mechanism since this can hide problems in your code base. It is better to use "On Error GoTo" and jump to an error handling code snippet at the bottom of your routine. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://social.msdn.microsoft.com/Forums/en-US/46b0768d-07bc-459c-a3f0-fda83ee64402/are-there-vba-builtin-functions-to-read-ini-files?forum=isvvba
+https://msdn.microsoft.com/en-us/library/dd942824(v=office.12).aspx#odc_ac2007_ta_PerformanceTipsToSpeedUpYourAccessDB_AccessModuleVBAPerformanceTips
